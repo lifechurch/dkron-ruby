@@ -3,7 +3,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**name** | **String** | Name for the job. | 
+**name** | **String** | Name for the job. Use only lower case letters (unicode), digits, underscore and dash. | 
 **displayname** | **String** | Nice name for the job. Optional. | [optional] 
 **schedule** | **String** | Cron expression for the job. | 
 **timezone** | **String** | Timezone where the job will be executed. By default and when field is set to empty string, the job will run in local time. | [optional] 

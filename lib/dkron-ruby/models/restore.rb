@@ -13,72 +13,17 @@ Swagger Codegen version: 2.4.17
 require 'date'
 
 module Dkron
-  # A member represents a cluster member node.
-  class Member
-    # Node name
-    attr_accessor :name
-
-    # IP Address
-    attr_accessor :addr
-
-    # Port number
-    attr_accessor :port
-
-    # Tags asociated with this node
-    attr_accessor :tags
-
-    # The serf status of the node see: https://godoc.org/github.com/hashicorp/serf/serf#MemberStatus
-    attr_accessor :status
-
-    # Serf protocol minimum version this node can understand or speak
-    attr_accessor :protocol_min
-
-    # Serf protocol maximum version this node can understand or speak
-    attr_accessor :protocol_max
-
-    # Serf protocol current version this node can understand or speak
-    attr_accessor :protocol_cur
-
-    # Serf delegate protocol minimum version this node can understand or speak
-    attr_accessor :delegate_min
-
-    # Serf delegate protocol maximum version this node can understand or speak
-    attr_accessor :delegate_max
-
-    # Serf delegate protocol current version this node can understand or speak
-    attr_accessor :delegate_cur
-
+  # Each job restore result.
+  class Restore
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'name' => :'Name',
-        :'addr' => :'Addr',
-        :'port' => :'Port',
-        :'tags' => :'Tags',
-        :'status' => :'Status',
-        :'protocol_min' => :'ProtocolMin',
-        :'protocol_max' => :'ProtocolMax',
-        :'protocol_cur' => :'ProtocolCur',
-        :'delegate_min' => :'DelegateMin',
-        :'delegate_max' => :'DelegateMax',
-        :'delegate_cur' => :'DelegateCur'
       }
     end
 
     # Attribute type mapping.
     def self.swagger_types
       {
-        :'name' => :'String',
-        :'addr' => :'String',
-        :'port' => :'Integer',
-        :'tags' => :'Hash<String, String>',
-        :'status' => :'Integer',
-        :'protocol_min' => :'Integer',
-        :'protocol_max' => :'Integer',
-        :'protocol_cur' => :'Integer',
-        :'delegate_min' => :'Integer',
-        :'delegate_max' => :'Integer',
-        :'delegate_cur' => :'Integer'
       }
     end
 
@@ -89,52 +34,6 @@ module Dkron
 
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h| h[k.to_sym] = v }
-
-      if attributes.has_key?(:'Name')
-        self.name = attributes[:'Name']
-      end
-
-      if attributes.has_key?(:'Addr')
-        self.addr = attributes[:'Addr']
-      end
-
-      if attributes.has_key?(:'Port')
-        self.port = attributes[:'Port']
-      end
-
-      if attributes.has_key?(:'Tags')
-        if (value = attributes[:'Tags']).is_a?(Hash)
-          self.tags = value
-        end
-      end
-
-      if attributes.has_key?(:'Status')
-        self.status = attributes[:'Status']
-      end
-
-      if attributes.has_key?(:'ProtocolMin')
-        self.protocol_min = attributes[:'ProtocolMin']
-      end
-
-      if attributes.has_key?(:'ProtocolMax')
-        self.protocol_max = attributes[:'ProtocolMax']
-      end
-
-      if attributes.has_key?(:'ProtocolCur')
-        self.protocol_cur = attributes[:'ProtocolCur']
-      end
-
-      if attributes.has_key?(:'DelegateMin')
-        self.delegate_min = attributes[:'DelegateMin']
-      end
-
-      if attributes.has_key?(:'DelegateMax')
-        self.delegate_max = attributes[:'DelegateMax']
-      end
-
-      if attributes.has_key?(:'DelegateCur')
-        self.delegate_cur = attributes[:'DelegateCur']
-      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -154,18 +53,7 @@ module Dkron
     # @param [Object] Object to be compared
     def ==(o)
       return true if self.equal?(o)
-      self.class == o.class &&
-          name == o.name &&
-          addr == o.addr &&
-          port == o.port &&
-          tags == o.tags &&
-          status == o.status &&
-          protocol_min == o.protocol_min &&
-          protocol_max == o.protocol_max &&
-          protocol_cur == o.protocol_cur &&
-          delegate_min == o.delegate_min &&
-          delegate_max == o.delegate_max &&
-          delegate_cur == o.delegate_cur
+      self.class == o.class
     end
 
     # @see the `==` method
@@ -177,7 +65,7 @@ module Dkron
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [name, addr, port, tags, status, protocol_min, protocol_max, protocol_cur, delegate_min, delegate_max, delegate_cur].hash
+      [].hash
     end
 
     # Builds the object from hash
