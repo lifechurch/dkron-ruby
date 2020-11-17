@@ -7,6 +7,7 @@ Method | HTTP request | Description
 [**create_or_update_job**](JobsApi.md#create_or_update_job) | **POST** /jobs | 
 [**delete_job**](JobsApi.md#delete_job) | **DELETE** /jobs/{job_name} | 
 [**get_jobs**](JobsApi.md#get_jobs) | **GET** /jobs | 
+[**restore**](JobsApi.md#restore) | **POST** /restore | 
 [**run_job**](JobsApi.md#run_job) | **POST** /jobs/{job_name} | 
 [**show_job_by_name**](JobsApi.md#show_job_by_name) | **GET** /jobs/{job_name} | 
 [**toggle_job**](JobsApi.md#toggle_job) | **POST** /jobs/{job_name}/toggle | 
@@ -29,7 +30,7 @@ api_instance = Dkron::JobsApi.new
 body = Dkron::Job.new # Job | Updated job object
 
 opts = { 
-  runoncreate: nil # Object | If present, regardless of any value, causes the job to be run immediately after being succesfully created or updated.
+  runoncreate: true # BOOLEAN | If present, regardless of any value, causes the job to be run immediately after being succesfully created or updated.
 }
 
 begin
@@ -45,7 +46,7 @@ end
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **body** | [**Job**](Job.md)| Updated job object | 
- **runoncreate** | [**Object**](.md)| If present, regardless of any value, causes the job to be run immediately after being succesfully created or updated. | [optional] 
+ **runoncreate** | **BOOLEAN**| If present, regardless of any value, causes the job to be run immediately after being succesfully created or updated. | [optional] 
 
 ### Return type
 
@@ -143,6 +144,52 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**Array&lt;Job&gt;**](Job.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+
+# **restore**
+> Array&lt;Restore&gt; restore(file)
+
+
+
+Restore jobs from json file. 
+
+### Example
+```ruby
+# load the gem
+require 'dkron-ruby'
+
+api_instance = Dkron::JobsApi.new
+
+file = File.new('/path/to/file.txt') # File | Json file that needs to be restored.
+
+
+begin
+  result = api_instance.restore(file)
+  p result
+rescue Dkron::ApiError => e
+  puts "Exception when calling JobsApi->restore: #{e}"
+end
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **file** | **File**| Json file that needs to be restored. | 
+
+### Return type
+
+[**Array&lt;Restore&gt;**](Restore.md)
 
 ### Authorization
 
